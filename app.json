@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/tw93/Pake/main/schema/pake.schema.json",
+  "url": "https://app.orbit.management/",
+  "name": "Orbit",
+  "identifier": "tools.rec.orbit",
+  "title": "Orbit",
+  "icon": "icons/orbit.png",
+  "width": 1400,
+  "height": 1000,
+  "minWidth": 1000,
+  "minHeight": 700,
+  "appVersion": "1.0.0",
+  "newWindow": true,
+  "safeDomain": "app.orbit.management",
+  "enableFind": true
+}
