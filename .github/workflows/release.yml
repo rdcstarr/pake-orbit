@@ -59,6 +59,12 @@ jobs:
       - name: Install pake-cli
         run: npm install --no-save "pake-cli@${{ env.PAKE_VERSION }}"
 
+      # Orbit draws its own right-click menus, and Pake's injected menu stops the
+      # event before they see it. The script fails if event.js has changed shape.
+      - name: Remove Pake's right-click menu
+        shell: bash
+        run: node scripts/drop-context-menu.mjs
+
       - name: Cache Rust build
         uses: actions/cache@v4
         with:

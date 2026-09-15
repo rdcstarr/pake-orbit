@@ -40,6 +40,20 @@ browser. `scripts/check-config.mjs` reads the regex Pake compiled for the build
 and fails the workflow if the home page, the login, the two-factor challenge or
 search ever stop matching.
 
+## Right-click
+
+Pake injects a right-click menu of its own — *Copy Address*, *Open in Browser* —
+that listens on the whole document before anything else and stops the event
+whenever the pointer is over a link or an image. Orbit draws its own context
+menus on exactly those rows, so inside the window they never opened.
+
+`scripts/drop-context-menu.mjs` removes that listener from Pake's `event.js`
+before the build embeds it, and the workflow runs it right after installing
+`pake-cli`. Right-click then behaves as in a browser: Orbit's menus where Orbit
+has them, the system menu everywhere else. The script checks that it removed
+the contextmenu listener and nothing else, and fails the build if a Pake upgrade
+has moved it — so the menu cannot come back silently.
+
 ## What builds, and where
 
 | Platform | Format | Architecture |
