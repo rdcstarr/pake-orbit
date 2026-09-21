@@ -3,7 +3,6 @@
   "url": "https://app.orbit.management/",
   "name": "Orbit",
   "identifier": "tools.rec.orbit",
-  "title": "Orbit",
   "icon": "icons/orbit.png",
   "width": 1400,
   "height": 1000,
