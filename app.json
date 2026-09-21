@@ -10,9 +10,6 @@
   "minHeight": 700,
   "appVersion": "1.0.0",
   "hideTitleBar": true,
-  "inject": [
-    "inject/titlebar.css"
-  ],
   "newWindow": true,
   "safeDomain": "app.orbit.management",
   "enableFind": true

@@ -65,6 +65,18 @@ jobs:
         shell: bash
         run: node scripts/drop-context-menu.mjs
 
+      # Orbit lays its first row out around the window's buttons and drags the
+      # window from its own rows; Pake leaves the buttons up in a title bar
+      # nobody sees and lays a drag strip over the page bar. Both scripts fail
+      # if Pake has changed shape.
+      - name: Place the window's buttons on Orbit's row
+        shell: bash
+        run: node scripts/place-window-buttons.mjs
+
+      - name: Remove Pake's drag strip
+        shell: bash
+        run: node scripts/drop-drag-strip.mjs
+
       - name: Cache Rust build
         uses: actions/cache@v4
         with:

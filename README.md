@@ -54,6 +54,29 @@ has them, the system menu everywhere else. The script checks that it removed
 the contextmenu listener and nothing else, and fails the build if a Pake upgrade
 has moved it — so the menu cannot come back silently.
 
+## The window's buttons
+
+`hideTitleBar` draws the page under the title bar, so the three buttons float
+over Orbit's top-left corner. Orbit knows: it reads `window.pakeConfig` before
+its first paint and lays its first row out around them — the workspace picker
+after them in the rail, the page bar's toggle after them when the rail is
+closed — and marks that row, the page bar and the sign-in background with
+`data-tauri-drag-region`, so the window drags and double-click zooms from them,
+as from any title bar.
+
+Two things Pake does not do on its own, both patched into its sources before
+the build, the way the right-click menu is:
+
+`scripts/place-window-buttons.mjs` asks Tauri to place the buttons on Orbit's
+44px row, centred at 22pt, where macOS would leave them centred at 14 in a
+title bar nobody sees. Should a macOS release move them, the figure to adjust
+is the `y` in that script: the circle's centre lands at `y + 2`.
+
+`scripts/drop-drag-strip.mjs` stops Pake laying its invisible 20px drag strip
+across the top of the page, where it sat over the upper half of every button in
+Orbit's page bar, and grants the permission a double-click on Orbit's rows
+needs to zoom the window.
+
 ## What builds, and where
 
 | Platform | Format | Architecture |

@@ -1,6 +1,0 @@
-/* With the overlay title bar the traffic lights sit over the page's top-left corner, which is
-   Orbit's sidebar. Pake adds #pake-top-dom only where that bar is on, so keying off it keeps the
-   gap out of the Linux and Windows builds, which still have a real title bar above the page. */
-body:has(#pake-top-dom) [data-slot="sidebar-inner"] {
-  padding-top: 30px;
-}
