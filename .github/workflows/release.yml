@@ -77,6 +77,13 @@ jobs:
         shell: bash
         run: node scripts/drop-drag-strip.mjs
 
+      # Pake's second stylesheet pads by selector, and two of its selectors are
+      # plain Tailwind class combinations Orbit uses. The script fails if
+      # style.js has changed shape.
+      - name: Remove Pake's top-padding stylesheet
+        shell: bash
+        run: node scripts/drop-top-padding.mjs
+
       - name: Cache Rust build
         uses: actions/cache@v4
         with:

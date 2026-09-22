@@ -77,6 +77,22 @@ across the top of the page, where it sat over the upper half of every button in
 Orbit's page bar, and grants the permission a double-click on Orbit's rows
 needs to zoom the window.
 
+## The stylesheet Pake pads with
+
+With the title bar hidden on macOS, Pake appends a stylesheet that pushes the
+top of the page down for every site it ships support for. Most of those
+selectors name a site's own markup and match nothing here, but two are plain
+Tailwind class combinations: `.flex.w-full.h-full.overflow-hidden`, which is the
+root of every searchable dropdown in Orbit — the record picker, the country
+field, the command palette — and `.text-sidebar-foreground .bg-sidebar`, which
+is the sidebar's column. In the window they read as 20px of empty space above a
+dropdown's search box and 30px above the rail.
+
+`scripts/drop-top-padding.mjs` stops that sheet being appended. Orbit's own rows
+already make room for the window's buttons, and the drag strip whose cursor the
+sheet also carried is gone, so nothing in it applied to Orbit on purpose. Like
+its siblings the script fails the build if a Pake upgrade has moved the block.
+
 ## What builds, and where
 
 | Platform | Format | Architecture |
