@@ -93,6 +93,18 @@ already make room for the window's buttons, and the drag strip whose cursor the
 sheet also carried is gone, so nothing in it applied to Orbit on purpose. Like
 its siblings the script fails the build if a Pake upgrade has moved the block.
 
+## Swiping back and forward
+
+In Safari a two-finger swipe on the trackpad goes back or forward a page.
+WKWebView ships with that gesture off and Pake never turns it on, so in the
+window the swipe reached Orbit as a sideways scroll and only dragged the page.
+Tauri does not expose the setting either, so
+`scripts/allow-swipe-navigation.mjs` sets `allowsBackForwardNavigationGestures`
+on every window's WKWebView right after Pake's `window.rs` builds it. Orbit's
+own page changes are history entries, so the swipe walks them as the browser
+buttons do. Like its siblings the script fails the build if a Pake upgrade has
+moved the line it anchors to.
+
 ## What builds, and where
 
 | Platform | Format | Architecture |

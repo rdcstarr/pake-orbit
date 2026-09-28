@@ -84,6 +84,13 @@ jobs:
         shell: bash
         run: node scripts/drop-top-padding.mjs
 
+      # WKWebView ships with the trackpad's back/forward swipe off, and Pake
+      # never turns it on, so the swipe only dragged the page sideways. The
+      # script fails if window.rs has changed shape.
+      - name: Turn on swipe navigation
+        shell: bash
+        run: node scripts/allow-swipe-navigation.mjs
+
       - name: Cache Rust build
         uses: actions/cache@v4
         with:
